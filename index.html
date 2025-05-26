@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProResume Builder - Create Your Professional Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Pro<span>Resume</span></div>
+            <nav>
+                <div class="dropdown">
+                    <button class="btn btn-outline" id="templatesBtn"><i class="fas fa-palette"></i> Templates</button>
+                    <div class="dropdown-content" id="templatesDropdown">
+                        <a href="#" data-template="modern">Modern (Current)</a>
+                        <a href="#" data-template="classic">Classic (Coming Soon)</a>
+                        <a href="#" data-template="creative">Creative (Coming Soon)</a>
+                    </div>
+                </div>
+                <button class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up Free</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="editor-area">
+            <!-- Form Panel -->
+            <div class="form-panel">
+                <div class="form-panel-header">
+                    <h2>Craft Your Story</h2>
+                    <button class="btn btn-danger btn-small" id="clearAllBtn"><i class="fas fa-trash-alt"></i> Clear All</button>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-user-circle icon-form"></i> Personal Details</h3>
+                    <div class="form-group profile-pic-group">
+                        <label for="profilePic">Profile Picture (Optional)</label>
+                        <input type="file" id="profilePicInput" accept="image/*">
+                        <div id="profilePicPreviewContainer" style="display:none;">
+                            <img id="profilePicPreview" src="#" alt="Profile Preview" />
+                            <button type="button" id="removeProfilePic" class="btn-remove-pic"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="e.g., Alex Johnson">
+                    </div>
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title / Profession</label>
+                        <input type="text" id="jobTitle" placeholder="e.g., Senior Marketing Manager">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="e.g., alex.johnson@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="e.g., +1 (555) 010-0203">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address / Location</label>
+                        <input type="text" id="address" placeholder="e.g., San Francisco, CA">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile (URL)</label>
+                        <input type="url" id="linkedin" placeholder="linkedin.com/in/alexjohnson">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio/Website (URL)</label>
+                        <input type="url" id="portfolio" placeholder="yourportfolio.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" rows="5" placeholder="A compelling summary of your skills, experience, and career goals..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-briefcase icon-form"></i> Work Experience</h3>
+                    <div id="experienceContainer">
+                        <!-- Experience fields will be added here by JavaScript -->
+                    </div>
+                    <button type="button" class="btn btn-add" id="addExperienceBtn"><i class="fas fa-plus-circle"></i> Add Experience</button>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-graduation-cap icon-form"></i> Education</h3>
+                    <div id="educationContainer">
+                        <!-- Education fields will be added here by JavaScript -->
+                    </div>
+                    <button type="button" class="btn btn-add" id="addEducationBtn"><i class="fas fa-plus-circle"></i> Add Education</button>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-tools icon-form"></i> Projects</h3>
+                    <div id="projectsContainer">
+                        <!-- Project fields will be added here by JavaScript -->
+                    </div>
+                    <button type="button" class="btn btn-add" id="addProjectBtn"><i class="fas fa-plus-circle"></i> Add Project</button>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-cogs icon-form"></i> Skills</h3>
+                    <p class="form-hint">Enter skills one by one, or comma-separated.</p>
+                    <div id="skillsContainer">
+                        <!-- Skill fields will be added here by JavaScript (or a single textarea) -->
+                    </div>
+                    <button type="button" class="btn btn-add" id="addSkillBtn"><i class="fas fa-plus-circle"></i> Add Skill</button>
+                    <!-- Alternative for skills:
+                    <div class="form-group">
+                        <label for="skillsInput">Skills (Comma Separated)</label>
+                        <textarea id="skillsInput" rows="3" placeholder="e.g., JavaScript, Python, Project Management, Agile"></textarea>
+                    </div>
+                    -->
+                </div>
+                <div class="form-section">
+                    <h3><i class="fas fa-language icon-form"></i> Languages</h3>
+                    <div id="languagesContainer">
+                        <!-- Language fields will be added here by JavaScript -->
+                    </div>
+                    <button type="button" class="btn btn-add" id="addLanguageBtn"><i class="fas fa-plus-circle"></i> Add Language</button>
+                </div>
+
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="preview-panel-container">
+                <div class="preview-actions">
+                    <button id="downloadPdfBtn" class="btn btn-success btn-large"><i class="fas fa-download"></i> Download Your Resume</button>
+                </div>
+                <div class="preview-panel modern-template" id="resumePreview">
+                    <!-- Default template class -->
+                    <div class="resume-header">
+                        <div class="header-content">
+                            <h1 id="previewFullName">Your Name</h1>
+                            <p id="previewJobTitle">Your Profession</p>
+                            <div class="contact-info">
+                                <span id="previewEmail" style="display:none;"><i class="fas fa-envelope"></i> email@example.com</span>
+                                <span id="previewPhone" style="display:none;"><i class="fas fa-phone"></i> (555) 123-4567</span>
+                                <span id="previewAddress" style="display:none;"><i class="fas fa-map-marker-alt"></i> City, Country</span>
+                                <span id="previewLinkedIn" style="display:none;"><i class="fab fa-linkedin"></i> linkedin.com/in/yourprofile</span>
+                                <span id="previewPortfolio" style="display:none;"><i class="fas fa-globe"></i> yourportfolio.com</span>
+                            </div>
+                        </div>
+                        <div class="profile-pic-area">
+                            <img id="resumeProfilePic" src="#" alt="Profile Picture" style="display:none;" />
+                        </div>
+                    </div>
+                    <hr class="divider">
+
+                    <div class="resume-section" id="summarySection">
+                        <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+                        <p id="previewSummary">Enter your professional summary here.</p>
+                    </div>
+
+                    <div class="resume-section" id="experienceSection">
+                        <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                        <div id="previewExperience">
+                            <p class="placeholder-text"><em>Add your work experience details.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section" id="educationSection">
+                        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div id="previewEducation">
+                            <p class="placeholder-text"><em>Add your education details.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section" id="projectsSection">
+                        <h2><i class="fas fa-tools"></i> Projects</h2>
+                        <div id="previewProjects">
+                            <p class="placeholder-text"><em>Showcase your projects.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section" id="skillsSection">
+                        <h2><i class="fas fa-cogs"></i> Skills</h2>
+                        <ul id="previewSkills">
+                            <li class="placeholder-text"><em>List your key skills.</em></li>
+                        </ul>
+                    </div>
+                    <div class="resume-section" id="languagesSection">
+                        <h2><i class="fas fa-language"></i> Languages</h2>
+                        <ul id="previewLanguages">
+                            <li class="placeholder-text"><em>e.g., English (Native), Spanish (Conversational)</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 ProResume Builder. Design with <i class="fas fa-heart"></i> for professionals.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
